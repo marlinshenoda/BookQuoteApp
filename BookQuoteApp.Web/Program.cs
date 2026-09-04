@@ -22,7 +22,8 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
                 "http://localhost:4200",
-                "https://localhost:4200")
+                "https://localhost:4200",
+                "https://witty-sand-04306b910.3.azurestaticapps.net")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
