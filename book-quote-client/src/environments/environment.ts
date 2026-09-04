@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://https://witty-sand-04306b910.3.azurestaticapps.net/api'
+  production: true,
+  apiUrl: 'bookquote-f8c2c7gac5dyhucg.swedencentral-01.azurewebsites.net'
 };
