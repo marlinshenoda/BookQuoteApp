@@ -46,12 +46,15 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.Run();
 
 
 
 app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookQuote API v1");
+        c.RoutePrefix = "swagger";
+    });
 
 
 app.UseHttpsRedirection();
