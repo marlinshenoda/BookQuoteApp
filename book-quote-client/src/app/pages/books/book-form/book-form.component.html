@@ -1,0 +1,45 @@
+<div class="container pb-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8 col-xl-6">
+      <div class="card shadow-sm">
+        <div class="card-body p-4">
+          <h1 class="h3 mb-3">
+            @if (isEdit()) {
+              <i class="fa-solid fa-pen me-2"></i>Redigera bok
+            } @else {
+              <i class="fa-solid fa-plus me-2"></i>Lägg till ny bok
+            }
+          </h1>
+
+          @if (error()) {
+            <div class="alert alert-danger">{{ error() }}</div>
+          }
+
+          <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="title">Titel</label>
+              <input id="title" type="text" class="form-control" formControlName="title" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="author">Författare</label>
+              <input id="author" type="text" class="form-control" formControlName="author" />
+            </div>
+            <div class="mb-4">
+              <label class="form-label" for="publishedDate">Publiceringsdatum</label>
+              <input id="publishedDate" type="date" class="form-control" formControlName="publishedDate" />
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-primary" type="submit" [disabled]="loading()">
+                @if (loading()) {
+                  <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+                }
+                Spara
+              </button>
+              <a routerLink="/books" class="btn btn-outline-secondary">Avbryt</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

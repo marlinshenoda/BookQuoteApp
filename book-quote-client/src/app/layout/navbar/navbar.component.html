@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg border-bottom mb-4">
+  <div class="container">
+    <a class="navbar-brand fw-semibold fs-4" routerLink="/books">
+      <i class="fa-solid fa-book-open me-2"></i>BookQuote
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNav"
+      aria-controls="mainNav"
+      aria-expanded="false"
+      aria-label="Visa meny"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      @if (auth.isLoggedIn()) {
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/books" routerLinkActive="active" ariaCurrentWhenActive="page">
+              <i class="fa-solid fa-book me-1"></i>Böcker
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/quotes" routerLinkActive="active" ariaCurrentWhenActive="page">
+              <i class="fa-solid fa-quote-left me-1"></i>Mina citat
+            </a>
+          </li>
+        </ul>
+      }
+      <div class="d-flex align-items-center gap-2 ms-lg-auto">
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-md"
+          (click)="toggleTheme()"
+          [attr.aria-label]="theme.isDark() ? 'Byt till ljust tema' : 'Byt till mörkt tema'"
+        >
+          @if (theme.isDark()) {
+            <i class="fa-solid fa-sun"></i>
+          } @else {
+            <i class="fa-solid fa-moon"></i>
+          }
+        </button>
+        @if (auth.isLoggedIn()) {
+          <span class="navbar-text small d-none d-md-inline">
+            <i class="fa-solid fa-user me-1"></i>{{ auth.userName() }}
+          </span>
+          <button type="button" class="btn btn-outline-danger btn-lg" (click)="logout()">
+            <i class="fa-solid fa-right-from-bracket me-1"></i>Logga ut
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</nav>

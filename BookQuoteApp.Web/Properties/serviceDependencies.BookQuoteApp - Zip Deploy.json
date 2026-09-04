@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/BookQuoteAppWebapi/apis/BookQuoteAppWeb",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/BookQuoteApp/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsDefaultConnection1_E9CCCCDED2",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/bookquoteserver/databases/BookQuoteDataBase",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DefaultConnection1",
+      "dynamicId": null
+    }
+  }
+}

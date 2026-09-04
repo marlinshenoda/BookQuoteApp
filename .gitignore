@@ -1,0 +1,11 @@
+bin/
+obj/
+*.user
+*.db
+*.db-shm
+*.db-wal
+.vs/
+
+book-quote-client/node_modules/
+book-quote-client/dist/
+book-quote-client/.angular/

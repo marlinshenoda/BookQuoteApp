@@ -1,0 +1,76 @@
+<div class="container pb-5">
+  <div class="mb-4">
+    <h1 class="h2 mb-1"><i class="fa-solid fa-quote-left me-2"></i>Mina citat</h1>
+    <p class="text-body-secondary mb-0">Spara upp till {{ maxQuotes }} favoritcitat.</p>
+  </div>
+
+  @if (error()) {
+    <div class="alert alert-danger">{{ error() }}</div>
+  }
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h2 class="h5">
+        @if (editingId() === null) {
+          <i class="fa-solid fa-plus me-2"></i>Lägg till citat
+        } @else {
+          <i class="fa-solid fa-pen me-2"></i>Redigera citat
+        }
+      </h2>
+      <form [formGroup]="form" (ngSubmit)="submit()" class="row g-3" novalidate>
+        <div class="col-12">
+          <label class="form-label" for="text">Citat</label>
+          <textarea id="text" rows="3" class="form-control" formControlName="text"></textarea>
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="source">Källa / författare</label>
+          <input id="source" type="text" class="form-control" formControlName="source" />
+        </div>
+        <div class="col-12 d-flex flex-wrap gap-2">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="editingId() === null && quotes().length >= maxQuotes"
+          >
+            Spara
+          </button>
+          @if (editingId() !== null) {
+            <button type="button" class="btn btn-outline-secondary" (click)="cancelEdit()">Avbryt</button>
+          }
+        </div>
+      </form>
+      @if (editingId() === null && quotes().length >= maxQuotes) {
+        <p class="small text-warning mb-0 mt-2">Max {{ maxQuotes }} citat — ta bort ett citat för att lägga till fler.</p>
+      }
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="text-center py-4">
+      <div class="spinner-border text-primary" role="status" aria-label="Laddar"></div>
+    </div>
+  } @else if (quotes().length === 0) {
+    <div class="alert alert-info">Du har inga sparade citat ännu.</div>
+  } @else {
+    <div class="row g-3">
+      @for (quote of quotes(); track quote.id) {
+        <div class="col-12 col-md-6">
+          <blockquote class="card h-100 shadow-sm mb-0">
+            <div class="card-body">
+              <p class="mb-2 fst-italic">"{{ quote.text }}"</p>
+              <footer class="blockquote-footer mb-3">{{ quote.source }}</footer>
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="startEdit(quote)">
+                  <i class="fa-solid fa-pen-to-square me-1"></i>Redigera
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteQuote(quote.id)">
+                  <i class="fa-solid fa-trash me-1"></i>Radera
+                </button>
+              </div>
+            </div>
+          </blockquote>
+        </div>
+      }
+    </div>
+  }
+</div>

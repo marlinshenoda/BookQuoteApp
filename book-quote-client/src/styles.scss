@@ -1,0 +1,35 @@
+body {
+  min-height: 100vh;
+  font-size: 30px;
+
+}
+
+.card,
+blockquote.card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+  }
+}
+.container {
+  max-width: 2200px !important;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+button,
+input,
+textarea,
+select {
+  font-size: 17px;
+}
+
+.card,
+blockquote.card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
