@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5291/api'
+  apiUrl: 'http://bookquote-f8c2c7gac5dyhucg.swedencentral-01.azurewebsites.net/api'
 };
